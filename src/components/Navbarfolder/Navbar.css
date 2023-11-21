@@ -1,3 +1,6 @@
+.contenu_navbar {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
 .navbar {
   background-color: white;
   overflow: hidden; /* Pour gérer les éléments qui dépassent de la navbar */
@@ -8,6 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: "Roboto", sans-serif;
 }
 .logo {
   font-weight: bold;
@@ -16,39 +20,36 @@
 
 .btn-annonce {
   display: inline-block;
-  padding: 10px 20px; /* Espacement intérieur du bouton */
+  padding: 10px 20px;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  border: 2px solid #3498db; /* Couleur de la bordure */
-  border-radius: 5px; /* Bordure arrondie */
-  background-color: #3498db; /* Couleur de fond du bouton */
-  color: #ffffff; /* Couleur du texte */
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: #ffffff;
 }
 
-/* Style du bouton au survol de la souris */
 .btn-annonce:hover {
-  background-color: #2980b9; /* Couleur de fond au survol */
-  border-color: #2980b9; /* Couleur de la bordure au survol */
-  color: #ffffff; /* Couleur du texte au survol */
+  background-color: #2980b9;
+  border-color: #2980b9;
+  color: #ffffff;
 }
 
-.body {
-  margin: 0 !important;
+.menu {
+  display: flex;
 }
-
-.navbar li {
-  float: left;
-  display: block;
+.menu > div {
+  margin-right: 15px; /* Ajoutez de l'espace entre les éléments */
 }
-
 .navbar a {
   display: block;
-  color: white;
+  color: rgb(0, 0, 0);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  margin-right: 15px;
 }
 
 .navbar a:hover {
