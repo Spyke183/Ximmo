@@ -6,6 +6,7 @@ import "./index.css";
 import Acceuil from "./router/Acceuil.jsx";
 import ErrorPage from "./error-page";
 import Connexion from "./router/Connexion.jsx";
+import Inscription from "./router/Inscription.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,5 +20,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <App />
     <RouterProvider router={router} />
     <Connexion />
+    <Inscription />
   </React.StrictMode>
 );
