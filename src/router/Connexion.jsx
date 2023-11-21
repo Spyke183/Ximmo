@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function Connexion() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,12 +29,12 @@ function Connexion() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Connexion réussie :", data);
+        console.log("Connexion réussie :", data.token);
 
-        // Vous pouvez gérer le résultat de la connexion ici, par exemple, en redirigeant l'utilisateur vers une autre page.
+        // Stocker les données utilisateur en local
+        localStorage.setItem("token", data.token);
       } else {
         console.error("Erreur lors de la connexion :", response.status);
-        // Vous pouvez également gérer les erreurs ici, par exemple, en affichant un message d'erreur à l'utilisateur.
       }
     } catch (error) {
       console.error("Erreur inattendue :", error);
