@@ -1,0 +1,57 @@
+.navbar {
+  background-color: white;
+  overflow: hidden; /* Pour gérer les éléments qui dépassent de la navbar */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.btn-annonce {
+  display: inline-block;
+  padding: 10px 20px; /* Espacement intérieur du bouton */
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #3498db; /* Couleur de la bordure */
+  border-radius: 5px; /* Bordure arrondie */
+  background-color: #3498db; /* Couleur de fond du bouton */
+  color: #ffffff; /* Couleur du texte */
+}
+
+/* Style du bouton au survol de la souris */
+.btn-annonce:hover {
+  background-color: #2980b9; /* Couleur de fond au survol */
+  border-color: #2980b9; /* Couleur de la bordure au survol */
+  color: #ffffff; /* Couleur du texte au survol */
+}
+
+.body {
+  margin: 0 !important;
+}
+
+.navbar li {
+  float: left;
+  display: block;
+}
+
+.navbar a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
