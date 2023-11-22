@@ -10,7 +10,7 @@ export default function Root() {
           Moteur de recherche pour <span classNameName="blue-text">
             louer
           </span>{" "}
-          ou <span classNameName="blue-text">acheter</span>
+          ou <span className="blue-text">acheter</span>
         </div>
         <div className="btn-annonce"> Déposer une annonce</div>
       </div>
