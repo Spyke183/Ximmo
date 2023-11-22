@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import LogoutCompte from "../components/DecoCompte/LogoutCompte"; // Importez le nouveau composant
 
 function Profil() {
   const [userData, setUserdata] = useState([]);
@@ -47,11 +48,6 @@ function Profil() {
     getProperties();
   }, []);
 
-  //Deconnexion du compte
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
-  };
   //Delete Annonce
   const handleDeleteProperty = async (propertyId) => {
     const deleteRequestOptions = {
@@ -107,8 +103,7 @@ function Profil() {
           </button>
         </div>
       ))}
-
-      <button onClick={handleLogout}>Déconnexion</button>
+      <LogoutCompte />
     </>
   );
 }
