@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import EditAnnonce from "../components/EditAnnonce/EditAnnonce";
 
 function Profil() {
   const [userData, setUserdata] = useState([]);
@@ -53,7 +54,7 @@ function Profil() {
     window.location.reload();
   };
   //Delete Annonce
-  const handleDeleteProperty = async (propertyId) => {
+  const handleDeleteAnnonce = async (annonceId) => {
     const deleteRequestOptions = {
       method: "DELETE",
       headers: {
@@ -94,17 +95,25 @@ function Profil() {
       )}
 
       <h2>Mes annonces</h2>
-      {properties.map((property, index) => (
+      {properties.map((annonce, index) => (
         <div key={index}>
-          <p>Titre: {property.title}</p>
-          <p>Prix: {property.price}</p>
-          <p>Description: {property.description}</p>
-          <p>Localisation: {property.location}</p>
-          {/*  <p>Type: {property.type}</p>*/}
+          <p>Titre: {annonce.title}</p>
+          <p>Prix: {annonce.price}</p>
+          <p>Description: {annonce.description}</p>
+          <p>Localisation: {annonce.location}</p>
+          {/*  <p>Type: {annonce.type}</p>*/}
           {/*SUPPRIMER ANNONCE */}
-          <button onClick={() => handleDeleteProperty(property.id)}>
+          <button onClick={() => handleDeleteAnnonce(annonce.id)}>
             Supprimer l'annonce
           </button>
+          {/*Modification annonce */}
+          {editingAnnonce && editingAnnonce.id === annonce.id && (
+            <EditAnnonce
+              annonce={editingAnnonce}
+              onCancel={handleCancelEdit}
+              onUpdate={handleUpdateAnnonce}
+            />
+          )}
         </div>
       ))}
 
