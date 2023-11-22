@@ -70,6 +70,12 @@ function Profil() {
           <p>Prix: {property.price}</p>
           <p>Description: {property.description}</p>
           <p>Localisation: {property.location}</p>
+          <div>
+            <h4>Images:</h4>
+            {property.images.map((image, imageIndex) => (
+              <img key={imageIndex} src={image} alt={`Image ${imageIndex}`} />
+            ))}
+          </div>
           {/*  <p>Type: {property.type}</p>*/}
           {/*SUPPRIMER ANNONCE */}
           <DeleteAnnonce propertyId={property.id} />

@@ -26,6 +26,11 @@ const router = createBrowserRouter([
     element: <Profil />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/annonce",
+    element: <Annonce />,
+    errorElement: <ErrorPage />,
+  },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

@@ -6,10 +6,11 @@ function Annonce() {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
+  const [imageLink, setImageLink] = useState("");
+  const [images, setImages] = useState([]);
 
   // État pour gérer l'état de connexion de l'utilisateur
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(
-    // Vous pouvez initialiser l'état en fonction de la présence du token dans le localStorage
     localStorage.getItem("token") !== null
   );
 
@@ -17,19 +18,19 @@ function Annonce() {
     e.preventDefault();
 
     if (!isUserLoggedIn) {
-      // Si l'utilisateur n'est pas connecté, vous pouvez afficher un message ou rediriger vers la page de connexion
       console.log(
         "L'utilisateur n'est pas connecté. Redirection vers la page de connexion."
       );
       return;
     }
 
-    // Données envoyer
+    // Données à envoyer
     const annonceData = {
       title,
       price,
       description,
       location,
+      images,
     };
 
     const requestOptions = {
@@ -56,6 +57,13 @@ function Annonce() {
     } catch (error) {
       console.error("Erreur inattendue :", error);
     }
+  };
+
+  const handleImageChange = (e) => {
+    const selectedImages = Array.from(e.target.files).map((file) =>
+      URL.createObjectURL(file)
+    );
+    setImages(selectedImages);
   };
 
   return (
@@ -98,6 +106,34 @@ function Annonce() {
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
               />
+            </label>
+            <br />
+            <label>
+              Image (lien) :
+              <input
+                type="text"
+                value={imageLink}
+                onChange={(e) => setImageLink(e.target.value)}
+              />
+            </label>
+            <br />
+            <button
+              type="button"
+              onClick={() => {
+                setImages([...images, imageLink]);
+                setImageLink("");
+              }}
+            >
+              Ajouter l'image
+            </button>
+            <br />
+            <label>
+              Images ajoutées :
+              {images.map((image, index) => (
+                <div key={index}>
+                  <img src={image} alt={`Image ${index}`} />
+                </div>
+              ))}
             </label>
             <br />
             <button type="submit">Ajouter l'annonce</button>
