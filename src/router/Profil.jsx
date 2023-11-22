@@ -72,7 +72,7 @@ function Profil() {
           <p>Localisation: {property.location}</p>
           {/*  <p>Type: {property.type}</p>*/}
           {/*SUPPRIMER ANNONCE */}
-          <DeleteAnnonce />
+          <DeleteAnnonce propertyId={property.id} />
         </div>
       ))}
       <LogoutCompte />

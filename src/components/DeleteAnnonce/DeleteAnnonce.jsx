@@ -1,6 +1,6 @@
 import React from "react";
 
-function DeleteAnnonce({ propertyId, onDelete }) {
+function DeleteAnnonce({ propertyId }) {
   const handleDelete = async () => {
     const deleteRequestOptions = {
       method: "DELETE",
@@ -17,7 +17,7 @@ function DeleteAnnonce({ propertyId, onDelete }) {
       );
 
       if (deleteResponse.ok) {
-        onDelete();
+        console.log("Nice ça fonctionne");
       } else {
         console.error("La suppression de l'annonce a échoué.");
       }
