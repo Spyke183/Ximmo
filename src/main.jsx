@@ -7,6 +7,8 @@ import Acceuil from "./router/Acceuil.jsx";
 import ErrorPage from "./error-page";
 import Connexion from "./router/Connexion.jsx";
 import Inscription from "./router/Inscription.jsx";
+import Profil from "./router/Profil.jsx";
+import Annonce from "./router/CreateAnnonce.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <App />
     <RouterProvider router={router} />
     <Connexion />
-    <Inscription />
+    {/*   <Inscription />*/}
+
+    <Annonce />
+    <Profil />
   </React.StrictMode>
 );
