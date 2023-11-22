@@ -24,7 +24,7 @@ function Annonce() {
       return;
     }
 
-    // Données à envoyer
+    // Données envoyer
     const annonceData = {
       title,
       price,
@@ -50,7 +50,6 @@ function Annonce() {
       if (response.ok) {
         const data = await response.json();
         console.log("Annonce ajoutée avec succès :", data);
-        // Vous pouvez ajouter ici une logique pour rediriger l'utilisateur vers une page de confirmation, par exemple
       } else {
         console.error("Erreur lors de l'ajout de l'annonce :", response.status);
       }
