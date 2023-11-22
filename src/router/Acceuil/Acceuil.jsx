@@ -4,7 +4,16 @@ import "./Acceuil.css";
 export default function Root() {
   return (
     <>
-      <div class="header"></div>
+      <div className="header">
+        <div className="title">
+          {" "}
+          Moteur de recherche pour <span classNameName="blue-text">
+            louer
+          </span>{" "}
+          ou <span className="blue-text">acheter</span>
+        </div>
+        <div className="btn-annonce"> Déposer une annonce</div>
+      </div>
     </>
   );
 }

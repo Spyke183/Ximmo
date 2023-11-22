@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import LogoutCompte from "../components/DecoCompte/LogoutCompte"; // Importez le nouveau composant
+import LogoutCompte from "../components/DecoCompte/LogoutCompte";
+import DeleteAnnonce from "../components/DeleteAnnonce/DeleteAnnonce";
 
 function Profil() {
   const [userData, setUserdata] = useState([]);
@@ -48,33 +49,6 @@ function Profil() {
     getProperties();
   }, []);
 
-  //Delete Annonce
-  const handleDeleteProperty = async (propertyId) => {
-    const deleteRequestOptions = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    };
-
-    try {
-      let deleteResponse = await fetch(
-        `https://apihackaton1.osc-fr1.scalingo.io/delete-properties/${propertyId}`,
-        deleteRequestOptions
-      );
-
-      if (deleteResponse.ok) {
-        // Mettez à jour la liste des propriétés après la suppression
-        getProperties();
-      } else {
-        console.error("La suppression de l'annonce a échoué.");
-      }
-    } catch (error) {
-      console.error("Erreur lors de la suppression de l'annonce:", error);
-    }
-  };
-
   if (!localStorage.getItem("token")) {
     return null;
   }
@@ -96,11 +70,15 @@ function Profil() {
           <p>Prix: {property.price}</p>
           <p>Description: {property.description}</p>
           <p>Localisation: {property.location}</p>
+          <div>
+            <h4>Images:</h4>
+            {property.images.map((image, imageIndex) => (
+              <img key={imageIndex} src={image} alt={`Image ${imageIndex}`} />
+            ))}
+          </div>
           {/*  <p>Type: {property.type}</p>*/}
           {/*SUPPRIMER ANNONCE */}
-          <button onClick={() => handleDeleteProperty(property.id)}>
-            Supprimer l'annonce
-          </button>
+          <DeleteAnnonce propertyId={property.id} />
         </div>
       ))}
       <LogoutCompte />
