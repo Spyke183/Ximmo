@@ -63,7 +63,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 80%;
-  max-width: 400px; /* Ajustez la largeur maximale selon vos besoins */
+  max-width: 400px;
   position: relative;
 }
 
@@ -74,7 +74,6 @@ body {
   cursor: pointer;
 }
 
-/* Connexion Modal Styles */
 .connexion-modal {
   display: flex;
   flex-direction: column;
@@ -82,7 +81,6 @@ body {
   justify-content: center;
 }
 
-/* Styles pour le formulaire */
 form {
   display: flex;
   flex-direction: column;
@@ -94,14 +92,12 @@ form {
   background-color: #fff;
 }
 
-/* Styles pour l'en-tête du formulaire */
 .header-modal {
   font-size: 1.5em;
   font-weight: bold;
   margin-bottom: 15px;
 }
 
-/* Styles pour les champs de saisie */
 label {
   margin-bottom: 10px;
 }
@@ -111,4 +107,27 @@ input {
   margin-bottom: 15px;
   width: 100%;
   box-sizing: border-box;
+}
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin: 16px auto; /* Ajout de la propriété margin et ajustement de la largeur */
+  max-width: 600px; /* Ajustez la largeur maximale selon vos préférences */
+  background-color: #fff;
+  display: flex;
+  flex-direction: column; /* Ajustement de la direction à colonne pour empiler le contenu verticalement */
+  align-items: center; /* Centrage des éléments horizontalement */
+}
+
+.card-img {
+  max-width: 100%;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 8px;
 }

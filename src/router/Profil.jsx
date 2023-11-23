@@ -8,18 +8,18 @@ function Profil() {
 
   useEffect(() => {
     async function getUserdata() {
-      const userRequestOptions = {
+      const RequestOptions = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       };
-      let userResponse = await fetch(
+      let Response = await fetch(
         "https://apihackaton1.osc-fr1.scalingo.io/users/profile",
-        userRequestOptions
+        RequestOptions
       );
-      let userData = await userResponse.json();
+      let userData = await Response.json();
 
       if (Object.keys(userData).length !== 0) {
         setUserdata(userData);

@@ -9,9 +9,10 @@ function Navbar() {
           <div className="logo">XIMMO</div>
           <div className="menu">
             <div className="btn-annonce"> Déposer une annonce</div>
-            <a href="#">Nous contacter</a>
-            <a href="#">Mes annonces (offres)</a>
+            <a href="/">Accueil</a>
+            <a href="/profil">Mes annonces (offres)</a>
             <a href="#">Se déconnecter</a>
+            <a href="#">Se connecter</a>
           </div>
         </div>
       </div>
