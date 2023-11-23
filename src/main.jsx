@@ -31,6 +31,11 @@ const router = createBrowserRouter([
     element: <Annonce />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/inscription",
+    element: <Inscription />,
+    errorElement: <ErrorPage />,
+  },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

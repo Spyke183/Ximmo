@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Ajoutez cette ligne pour utiliser le composant Link
 
 function Connexion() {
   const [email, setEmail] = useState("");
@@ -43,27 +44,34 @@ function Connexion() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Mot de passe:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <br />
-        <button type="submit">Se connecter</button>
-      </form>
+      <div className="connexion-modal">
+        <div className="header-modal">Se connecter</div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Email:
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <br />
+          <label>
+            Mot de passe:
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <button className="btn-annonce" onClick={handleSubmit}>
+            Se connecter
+          </button>
+        </form>
+        <p>
+          Pas encore de compte ? <Link to="/inscription">S'inscrire</Link>
+        </p>
+      </div>
     </>
   );
 }
