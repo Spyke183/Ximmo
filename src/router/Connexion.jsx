@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Ajoutez cette ligne pour utiliser le composant Link
+import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import toastUtils from "../components/toastUtils/ToastUtils"; // Assurez-vous de spécifier le bon chemin
 
 function Connexion() {
   const [email, setEmail] = useState("");
@@ -34,11 +36,20 @@ function Connexion() {
 
         // Stocker les données utilisateur en local
         localStorage.setItem("token", data.token);
+
+        // Afficher un toast de succès
+        toastUtils("success", "Connexion réussie");
       } else {
         console.error("Erreur lors de la connexion :", response.status);
+
+        // Afficher un toast d'erreur
+        toastUtils("error", "Erreur lors de la connexion");
       }
     } catch (error) {
       console.error("Erreur inattendue :", error);
+
+      // Afficher un toast d'erreur
+      toastUtils("error", "Erreur inattendue");
     }
   };
 
@@ -71,6 +82,7 @@ function Connexion() {
         <p>
           Pas encore de compte ? <Link to="/inscription">S'inscrire</Link>
         </p>
+        <ToastContainer />
       </div>
     </>
   );
