@@ -116,8 +116,8 @@ const Root = () => {
             <p>Prix: {property.price}</p>
             <p>Email: {property.email}</p>
             Description:{" "}
-            {property.description.length > 30
-              ? `${property.description.slice(0, 30)}...`
+            {property.description.length > 40
+              ? `${property.description.slice(0, 40)}...`
               : property.description}
             <p>Localisation: {property.location}</p>
           </div>
