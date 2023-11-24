@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
-import Acceuil from "./router/Acceuil/Acceuil.jsx";
+import Accueil from "./router/Accueil/Accueil.jsx";
 import ErrorPage from "./error-page";
 import Connexion from "./router/Connexion.jsx";
 import Inscription from "./router/Inscription.jsx";
@@ -13,7 +13,7 @@ import Annonce from "./router/CreateAnnonce.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Acceuil />,
+    element: <Accueil />,
     errorElement: <ErrorPage />,
   },
   {
@@ -29,6 +29,11 @@ const router = createBrowserRouter([
   {
     path: "/annonce",
     element: <Annonce />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/inscription",
+    element: <Inscription />,
     errorElement: <ErrorPage />,
   },
 ]);

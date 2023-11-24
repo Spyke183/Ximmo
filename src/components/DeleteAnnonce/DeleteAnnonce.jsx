@@ -1,4 +1,5 @@
 import React from "react";
+import "../../router/profil.css";
 
 function DeleteAnnonce({ propertyId }) {
   const handleDelete = async () => {
@@ -26,7 +27,11 @@ function DeleteAnnonce({ propertyId }) {
     }
   };
 
-  return <button onClick={handleDelete}>Supprimer l'annonce</button>;
+  return (
+    <button className="btn-annonce" onClick={handleDelete}>
+      Supprimer l'annonce
+    </button>
+  );
 }
 
 export default DeleteAnnonce;
