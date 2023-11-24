@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import toastUtils from "../components/toastUtils/ToastUtils";
 
 function Annonce() {
-  // États pour les champs de saisie
+  // États pour champs de saisie (VIDE ;-) )
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [email, setEmail] = useState("");
@@ -26,7 +26,7 @@ function Annonce() {
       return;
     }
 
-    // Données à envoyer
+    // Données à envoyer a l'API
     const annonceData = {
       title,
       price,
@@ -55,23 +55,23 @@ function Annonce() {
         const data = await response.json();
         console.log("Annonce ajoutée avec succès :", data);
 
-        // Afficher un toast de succès
+        // Stocker les données uti. en local
         toastUtils("success", "Annonce ajoutée avec succès");
 
-        // Rediriger vers la page de connexion après 3 secondes
+        // Afficher un toast de con.
         setTimeout(() => {
           window.location.href = "/";
         }, 4000);
       } else {
         console.error("Erreur lors de l'ajout de l'annonce :", response.status);
 
-        // Afficher un toast d'erreur
+        // Afficher un toast erreur
         toastUtils("error", "Erreur lors de l'ajout de l'annonce");
       }
     } catch (error) {
       console.error("Erreur inattendue :", error);
 
-      // Afficher un toast d'erreur
+      // Afficher un toast erreur
       toastUtils("error", "Erreur inattendue");
     }
   };

@@ -9,8 +9,7 @@ const Root = () => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(
     localStorage.getItem("token") !== null
   );
-
-  // États pour les critères de filtre
+  // États pour champs de saisie (VIDE ;-) )
   const [filterPrice, setFilterPrice] = useState("");
   const [filterTitle, setFilterTitle] = useState("");
 
@@ -28,14 +27,14 @@ const Root = () => {
       );
       let propertiesData = await propertiesResponse.json();
 
-      // Appliquer le filtre prix
+      //filtre prix
       if (filterPrice !== "") {
         propertiesData = propertiesData.filter(
           (property) => property.price <= parseInt(filterPrice)
         );
       }
 
-      // Appliquer le filtre titre
+      //filtre titre
       if (filterTitle !== "") {
         const keyword = filterTitle.toLowerCase();
         propertiesData = propertiesData.filter((property) =>
@@ -47,7 +46,7 @@ const Root = () => {
     }
 
     getProperties();
-    // Mettre à jour lorsque les filtres changent
+    // change contenu filtre lorsque valeur change
   }, [filterPrice, filterTitle]);
 
   const handleLoginSuccess = () => {
@@ -116,7 +115,10 @@ const Root = () => {
             <p>Titre: {property.title}</p>
             <p>Prix: {property.price}</p>
             <p>Email: {property.email}</p>
-            <p>Description: {property.description}</p>
+            Description:{" "}
+            {property.description.length > 100
+              ? `${property.description.slice(0, 100)}...`
+              : property.description}
             <p>Localisation: {property.location}</p>
           </div>
         </div>

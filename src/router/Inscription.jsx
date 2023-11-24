@@ -8,7 +8,7 @@ function Inscription() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Données à envoyer
+    // Données à envoyer a l'API
     const userData = {
       username,
       email,

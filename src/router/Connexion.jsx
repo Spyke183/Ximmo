@@ -6,7 +6,6 @@ import toastUtils from "../components/toastUtils/ToastUtils";
 function Connexion() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -33,25 +32,26 @@ function Connexion() {
         const data = await response.json();
         console.log("Connexion réussie :", data.token);
 
-        // Stocker les données utilisateur en local
+        // Stocker les données uti. en local
+
         localStorage.setItem("token", data.token);
 
-        // Afficher un toast de succès
+        // Afficher un toast de con.
         toastUtils("success", "Connexion réussie");
         setTimeout(() => {
           //utilisation window.location pour refresh navbar
           window.location.href = "/";
-        }, 3000);
+        }, 4000);
       } else {
         console.error("Erreur lors de la connexion :", response.status);
 
-        // Afficher un toast d'erreur
+        // Afficher un toast erreur
         toastUtils("error", "Erreur lors de la connexion");
       }
     } catch (error) {
       console.error("Erreur inattendue :", error);
 
-      // Afficher un toast d'erreur
+      // Afficher un toast erreur
       toastUtils("error", "Erreur inattendue");
     }
   };

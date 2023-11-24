@@ -4,7 +4,7 @@
 }
 .navbar {
   background-color: white;
-  overflow: hidden; /* Pour gérer les éléments qui dépassent de la navbar */
+  overflow: hidden;
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin-left: 1rem;
@@ -42,7 +42,7 @@
   display: flex;
 }
 .menu > div {
-  margin-right: 15px; /* Ajoutez de l'espace entre les éléments */
+  margin-right: 15px;
 }
 .navbar a {
   display: block;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LogoutCompte from "../components/DecoCompte/LogoutCompte";
 import DeleteAnnonce from "../components/DeleteAnnonce/DeleteAnnonce";
-import "./profil.css"; // Assurez-vous de spécifier le bon chemin
+import "./profil.css";
 
 function Profil() {
   const [userData, setUserdata] = useState([]);
@@ -77,14 +77,10 @@ function Profil() {
             <div>
               <h4>Images:</h4>
               {property.images.map((image, imageIndex) => (
-                <img
-                  key={imageIndex}
-                  src={image}
-                  alt={`Image ${imageIndex}`}
-                />
+                <img key={imageIndex} src={image} alt={`Image ${imageIndex}`} />
               ))}
             </div>
-            <DeleteAnnonce  propertyId={property.id} />
+            <DeleteAnnonce propertyId={property.id} />
           </div>
         ))}
       </div>
