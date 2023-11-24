@@ -113,12 +113,12 @@ input {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  margin: 16px auto; /* Ajout de la propriété margin et ajustement de la largeur */
-  max-width: 600px; /* Ajustez la largeur maximale selon vos préférences */
+  margin: 16px auto;
+  max-width: 600px;
   background-color: #fff;
   display: flex;
-  flex-direction: column; /* Ajustement de la direction à colonne pour empiler le contenu verticalement */
-  align-items: center; /* Centrage des éléments horizontalement */
+  flex-direction: column;
+  align-items: center;
 }
 
 .card-img {
@@ -130,4 +130,11 @@ input {
   height: auto;
   border-radius: 4px;
   margin-bottom: 8px;
+}
+.filtre {
+  display: flex;
+  display: flex;
+  flex-direction: column;
+  margin-left: 40%;
+  margin-right: 40%;
 }

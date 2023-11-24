@@ -1,15 +1,17 @@
 import React, { useState } from "react";
+import "./profil.css";
+import { ToastContainer } from "react-toastify";
+import toastUtils from "../components/toastUtils/ToastUtils";
 
 function Annonce() {
   // États pour les champs de saisie
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
+  const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [imageLink, setImageLink] = useState("");
   const [images, setImages] = useState([]);
-
-  // État pour gérer l'état de connexion de l'utilisateur
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(
     localStorage.getItem("token") !== null
   );
@@ -31,6 +33,7 @@ function Annonce() {
       description,
       location,
       images,
+      email,
     };
 
     const requestOptions = {
@@ -51,11 +54,25 @@ function Annonce() {
       if (response.ok) {
         const data = await response.json();
         console.log("Annonce ajoutée avec succès :", data);
+
+        // Afficher un toast de succès
+        toastUtils("success", "Annonce ajoutée avec succès");
+
+        // Rediriger vers la page de connexion après 3 secondes
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 4000);
       } else {
         console.error("Erreur lors de l'ajout de l'annonce :", response.status);
+
+        // Afficher un toast d'erreur
+        toastUtils("error", "Erreur lors de l'ajout de l'annonce");
       }
     } catch (error) {
       console.error("Erreur inattendue :", error);
+
+      // Afficher un toast d'erreur
+      toastUtils("error", "Erreur inattendue");
     }
   };
 
@@ -84,9 +101,18 @@ function Annonce() {
             <label>
               Prix:
               <input
-                type="text"
+                type="number"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
+              />
+            </label>
+
+            <label>
+              Email:
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </label>
             <br />
@@ -118,6 +144,7 @@ function Annonce() {
             </label>
             <br />
             <button
+              className="btn-annonce"
               type="button"
               onClick={() => {
                 setImages([...images, imageLink]);
@@ -136,10 +163,13 @@ function Annonce() {
               ))}
             </label>
             <br />
-            <button type="submit">Ajouter l'annonce</button>
+            <button className="btn-annonce" type="submit">
+              Ajouter l'annonce
+            </button>
           </form>
         </>
       )}
+      <ToastContainer />
     </>
   );
 }

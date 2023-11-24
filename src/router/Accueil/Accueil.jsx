@@ -79,27 +79,28 @@ const Root = () => {
           onLoginSuccess={handleLoginSuccess}
         />
       )}
-
-      {/* Zone de filtre par prix */}
-      <div>
-        <label htmlFor="filterPrice">Filtrer par prix maximum :</label>
-        <input
-          type="number"
-          id="filterPrice"
-          value={filterPrice}
-          onChange={(e) => setFilterPrice(e.target.value)}
-        />
-      </div>
-
-      {/* Zone de filtre par titre */}
-      <div>
-        <label htmlFor="filterTitle">Filtrer par titre :</label>
-        <input
-          type="text"
-          id="filterTitle"
-          value={filterTitle}
-          onChange={(e) => setFilterTitle(e.target.value)}
-        />
+      <div className="filtre">
+        {" "}
+        {/* Zone de filtre par prix */}
+        <div>
+          <label htmlFor="filterPrice">Filtrer par prix maximum :</label>
+          <input
+            type="number"
+            id="filterPrice"
+            value={filterPrice}
+            onChange={(e) => setFilterPrice(e.target.value)}
+          />
+        </div>
+        {/* Zone de filtre par titre */}
+        <div>
+          <label htmlFor="filterTitle">Filtrer par titre :</label>
+          <input
+            type="text"
+            id="filterTitle"
+            value={filterTitle}
+            onChange={(e) => setFilterTitle(e.target.value)}
+          />
+        </div>
       </div>
 
       {properties.map((property, index) => (
@@ -114,6 +115,7 @@ const Root = () => {
           <div className="Contenu">
             <p>Titre: {property.title}</p>
             <p>Prix: {property.price}</p>
+            <p>Email: {property.email}</p>
             <p>Description: {property.description}</p>
             <p>Localisation: {property.location}</p>
           </div>
