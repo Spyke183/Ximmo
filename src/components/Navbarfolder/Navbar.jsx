@@ -1,17 +1,33 @@
 import React from "react";
 import "../Navbarfolder/Navbar.css";
 
-function Navbar() {
+function Navbar(props) {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
+
   return (
     <>
-      <div class="contenu_navbar">
-        <div class="navbar">
-          <div class="logo">XIMMO</div>
-          <div class="menu">
-            <div class="btn-annonce"> Déposer une annonce</div>
-            <a href="#">Nous contacter</a>
-            <a href="#">Mes annonces (offres)</a>
-            <a href="#">Se déconnecter</a>
+      <div className="contenu_navbar">
+        <div className="navbar">
+          <div className="logo">XIMMO</div>
+          <div className="menu">
+            <a href="/">Accueil</a>
+            {props.isUserLoggedIn && (
+              <a href="/profil">Mes annonces (offres)</a>
+            )}
+            {props.isUserLoggedIn ? (
+              <>
+                <a href="#" onClick={handleLogout}>
+                  Se déconnecter
+                </a>
+              </>
+            ) : (
+              <>
+                <a href="/connexion">Se connecter</a>
+              </>
+            )}
           </div>
         </div>
       </div>

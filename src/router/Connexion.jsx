@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import toastUtils from "../components/toastUtils/ToastUtils";
 
 function Connexion() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState(null);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -33,37 +35,58 @@ function Connexion() {
 
         // Stocker les données utilisateur en local
         localStorage.setItem("token", data.token);
+
+        // Afficher un toast de succès
+        toastUtils("success", "Connexion réussie");
+        setTimeout(() => {
+          //utilisation window.location pour refresh navbar
+          window.location.href = "/";
+        }, 3000);
       } else {
         console.error("Erreur lors de la connexion :", response.status);
+
+        // Afficher un toast d'erreur
+        toastUtils("error", "Erreur lors de la connexion");
       }
     } catch (error) {
       console.error("Erreur inattendue :", error);
+
+      // Afficher un toast d'erreur
+      toastUtils("error", "Erreur inattendue");
     }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Mot de passe:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <br />
-        <button type="submit">Se connecter</button>
-      </form>
+      <div className="connexion-modal">
+        <div className="header-modal">Se connecter</div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Email:
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <br />
+          <label>
+            Mot de passe:
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <button className="btn-annonce" onClick={handleSubmit}>
+            Se connecter
+          </button>
+        </form>
+        <p>
+          Pas encore de compte ? <Link to="/inscription">S'inscrire</Link>
+        </p>
+        <ToastContainer />
+      </div>
     </>
   );
 }
