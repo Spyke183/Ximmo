@@ -10,6 +10,10 @@ const Root = () => {
     localStorage.getItem("token") !== null
   );
 
+  // États pour les critères de filtre
+  const [filterPrice, setFilterPrice] = useState("");
+  const [filterTitle, setFilterTitle] = useState("");
+
   useEffect(() => {
     async function getProperties() {
       const propertiesRequestOptions = {
@@ -24,11 +28,27 @@ const Root = () => {
       );
       let propertiesData = await propertiesResponse.json();
 
+      // Appliquer le filtre prix
+      if (filterPrice !== "") {
+        propertiesData = propertiesData.filter(
+          (property) => property.price <= parseInt(filterPrice)
+        );
+      }
+
+      // Appliquer le filtre titre
+      if (filterTitle !== "") {
+        const keyword = filterTitle.toLowerCase();
+        propertiesData = propertiesData.filter((property) =>
+          property.title.toLowerCase().includes(keyword)
+        );
+      }
+
       setProperties(propertiesData);
     }
 
     getProperties();
-  }, []);
+    // Mettre à jour lorsque les filtres changent
+  }, [filterPrice, filterTitle]);
 
   const handleLoginSuccess = () => {
     setIsUserLoggedIn(true);
@@ -52,12 +72,36 @@ const Root = () => {
           </div>
         )}
       </div>
+
       {showLoginModal && (
         <LoginModal
           onClose={() => setShowLoginModal(false)}
           onLoginSuccess={handleLoginSuccess}
         />
       )}
+
+      {/* Zone de filtre par prix */}
+      <div>
+        <label htmlFor="filterPrice">Filtrer par prix maximum :</label>
+        <input
+          type="number"
+          id="filterPrice"
+          value={filterPrice}
+          onChange={(e) => setFilterPrice(e.target.value)}
+        />
+      </div>
+
+      {/* Zone de filtre par titre */}
+      <div>
+        <label htmlFor="filterTitle">Filtrer par titre :</label>
+        <input
+          type="text"
+          id="filterTitle"
+          value={filterTitle}
+          onChange={(e) => setFilterTitle(e.target.value)}
+        />
+      </div>
+
       {properties.map((property, index) => (
         <div className="card" key={index}>
           {property.images && (

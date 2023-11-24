@@ -1,10 +1,7 @@
 import React from "react";
-import LogoutCompte from "../DecoCompte/LogoutCompte";
 import "../Navbarfolder/Navbar.css";
 
-function Navbar() {
-  const isUserLoggedIn = !!localStorage.getItem("token");
-
+function Navbar(props) {
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
@@ -17,10 +14,14 @@ function Navbar() {
           <div className="logo">XIMMO</div>
           <div className="menu">
             <a href="/">Accueil</a>
-            {isUserLoggedIn && <a href="/profil">Mes annonces (offres)</a>}
-            {isUserLoggedIn ? (
+            {props.isUserLoggedIn && (
+              <a href="/profil">Mes annonces (offres)</a>
+            )}
+            {props.isUserLoggedIn ? (
               <>
-                <a href="#" onClick={handleLogout}>Se déconnecter</a>
+                <a href="#" onClick={handleLogout}>
+                  Se déconnecter
+                </a>
               </>
             ) : (
               <>
@@ -29,7 +30,7 @@ function Navbar() {
             )}
           </div>
         </div>
-      </div> 
+      </div>
     </>
   );
 }

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import toastUtils from "../components/toastUtils/ToastUtils"; // Assurez-vous de spécifier le bon chemin
+import toastUtils from "../components/toastUtils/ToastUtils";
 
 function Connexion() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState(null);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -39,6 +38,10 @@ function Connexion() {
 
         // Afficher un toast de succès
         toastUtils("success", "Connexion réussie");
+        setTimeout(() => {
+          //utilisation window.location pour refresh navbar
+          window.location.href = "/";
+        }, 3000);
       } else {
         console.error("Erreur lors de la connexion :", response.status);
 
