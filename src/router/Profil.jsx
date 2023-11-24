@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LogoutCompte from "../components/DecoCompte/LogoutCompte";
 import DeleteAnnonce from "../components/DeleteAnnonce/DeleteAnnonce";
+import "./profil.css"; // Assurez-vous de spécifier le bon chemin
 
 function Profil() {
   const [userData, setUserdata] = useState([]);
@@ -55,32 +56,38 @@ function Profil() {
 
   return (
     <>
-      <h2>Profil de l'utilisateur</h2>
-      {userData && (
-        <div>
-          <p>Nom d'utilisateur: {userData.username}</p>
-          <p>Email: {userData.email}</p>
-        </div>
-      )}
-
-      <h2>Mes annonces</h2>
-      {properties.map((property, index) => (
-        <div key={index}>
-          <p>Titre: {property.title}</p>
-          <p>Prix: {property.price}</p>
-          <p>Description: {property.description}</p>
-          <p>Localisation: {property.location}</p>
+      <div className="header">
+        <div className="title">Profil de l'utilisateur</div>
+        {userData && (
           <div>
-            <h4>Images:</h4>
-            {property.images.map((image, imageIndex) => (
-              <img key={imageIndex} src={image} alt={`Image ${imageIndex}`} />
-            ))}
+            <p>Nom d'utilisateur: {userData.username}</p>
+            <p>Email: {userData.email}</p>
           </div>
-          {/*  <p>Type: {property.type}</p>*/}
-          {/*SUPPRIMER ANNONCE */}
-          <DeleteAnnonce propertyId={property.id} />
-        </div>
-      ))}
+        )}
+      </div>
+
+      <div className="card">
+        <h2>Mes annonces</h2>
+        {properties.map((property, index) => (
+          <div key={index}>
+            <p>Titre: {property.title}</p>
+            <p>Prix: {property.price}</p>
+            <p>Description: {property.description}</p>
+            <p>Localisation: {property.location}</p>
+            <div>
+              <h4>Images:</h4>
+              {property.images.map((image, imageIndex) => (
+                <img
+                  key={imageIndex}
+                  src={image}
+                  alt={`Image ${imageIndex}`}
+                />
+              ))}
+            </div>
+            <DeleteAnnonce  propertyId={property.id} />
+          </div>
+        ))}
+      </div>
       <LogoutCompte />
     </>
   );
